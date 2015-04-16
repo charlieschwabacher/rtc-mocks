@@ -15,11 +15,12 @@ EventTarget =
 
   removeEventListener: (event, callback) ->
     set = @handlers?.get(event)
-    set?.delete event, callback
-    @handlers.delete event if set? and set.size is 0
+    if set?
+      set.delete event, callback
+      @handlers.delete event if set.size is 0
 
   trigger: (event, args...) ->
-    @handlers.get(event)?.forEach (handler) -> handler.apply null, args
+    @handlers?.get(event)?.forEach (handler) -> handler.apply null, args
 
 
 

@@ -23,17 +23,17 @@
       set = (ref = this.handlers) != null ? ref.get(event) : void 0;
       if (set != null) {
         set["delete"](event, callback);
-      }
-      if ((set != null) && set.size === 0) {
-        return this.handlers["delete"](event);
+        if (set.size === 0) {
+          return this.handlers["delete"](event);
+        }
       }
     },
     trigger: function() {
-      var args, event, ref;
+      var args, event, ref, ref1;
       event = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
-      return (ref = this.handlers.get(event)) != null ? ref.forEach(function(handler) {
+      return (ref = this.handlers) != null ? (ref1 = ref.get(event)) != null ? ref1.forEach(function(handler) {
         return handler.apply(null, args);
-      }) : void 0;
+      }) : void 0 : void 0;
     }
   };
 
