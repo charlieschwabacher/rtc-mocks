@@ -1,0 +1,28 @@
+{
+  "name": "rtc-mocks",
+  "version": "0.0.0",
+  "description": "Mock WebRTC objects in order to test data channels outside of the browser",
+  "main": "index.js",
+  "files": ["index.js"],
+  "scripts": {
+    "build": "coffee -c index.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charlieschwabacher/rtc-mocks.git"
+  },
+  "keywords": [
+    "webrtc",
+    "mocks",
+    "rtc-mocks"
+  ],
+  "author": "Charlie Schwabacher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charlieschwabacher/rtc-mocks/issues"
+  },
+  "homepage": "https://github.com/charlieschwabacher/rtc-mocks",
+  "devDependencies": {
+    "coffee-script": "^1.9.2"
+  }
+}
