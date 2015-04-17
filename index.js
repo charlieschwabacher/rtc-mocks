@@ -34,16 +34,6 @@
       return result;
     };
 
-    MapSet.prototype.has = function(key, value) {
-      var set;
-      if (arguments.length === 1) {
-        return this.map.has(key);
-      } else {
-        set = this.map.get(key);
-        return set != null ? set.has(value) : void 0;
-      }
-    };
-
     return MapSet;
 
   })();

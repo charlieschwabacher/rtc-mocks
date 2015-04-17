@@ -9,7 +9,6 @@ class MapSet
     unless set = @map.get key
       set = new Set
       @map.set key, set
-
     set.add value
 
   delete: (key, value) ->
@@ -19,12 +18,6 @@ class MapSet
     @map.delete key if set.size is 0
     result
 
-  has: (key, value) ->
-    if arguments.length is 1
-      @map.has key
-    else
-      set = @map.get key
-      set?.has value
 
 directory = new Map
 
