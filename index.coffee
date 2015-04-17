@@ -1,26 +1,48 @@
+class MapSet
+
+  constructor: () ->
+    @map = new Map
+
+  get: (key) -> @map.get key
+
+  add: (key, value) ->
+    unless set = @map.get key
+      set = new Set
+      @map.set key, set
+
+    set.add value
+
+  delete: (key, value) ->
+    set = @map.get key
+    return false unless set?
+    result = set.delete value
+    @map.delete key if set.size is 0
+    result
+
+  has: (key, value) ->
+    if arguments.length is 1
+      @map.has key
+    else
+      set = @map.get key
+      set?.has value
+
 directory = new Map
 
 peerId = 0
 
 
+
 EventTarget =
 
   addEventListener: (event, callback) ->
-    @handlers ||= new Map
-    set = @handlers.get event
-    unless set?
-      set = new Set
-      @handlers.set event, set
-    set.add event, callback
+    @handlers ||= new MapSet
+    @handlers.add event, callback
 
   removeEventListener: (event, callback) ->
-    set = @handlers?.get(event)
-    if set?
-      set.delete event, callback
-      @handlers.delete event if set.size is 0
+    @handlers?.delete event, callback
 
   trigger: (event, args...) ->
-    @handlers?.get(event)?.forEach (handler) -> handler.apply null, args
+    @handlers.get(event)?.forEach (handler) -> handler.apply null, args
 
 
 
